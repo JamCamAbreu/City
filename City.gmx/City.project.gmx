@@ -4,9 +4,7 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound">
-    <sound>sound\mus_menu</sound>
-  </sounds>
+  <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_SU</sprite>
     <sprite>sprites\spr_water</sprite>
@@ -28,13 +26,25 @@
       <sprite>sprites\spr_zoneR1x1</sprite>
       <sprite>sprites\spr_dev</sprite>
     </sprites>
+    <sprites name="Menu/Bars">
+      <sprite>sprites\spr_purchaseIcon</sprite>
+      <sprite>sprites\spr_topBarIcon</sprite>
+      <sprite>sprites\spr_mouse</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_roomBG</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\scr_mapGenerate.gml</script>
+    <scripts name="MapGenerator">
+      <script>scripts\scr_mapGenerate.gml</script>
+      <script>scripts\scr_generateWater.gml</script>
+      <script>scripts\scr_generateTrees.gml</script>
+      <script>scripts\scr_generateSU.gml</script>
+      <script>scripts\scr_seed.gml</script>
+      <script>scripts\scr_seedGrow.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_consolas12</font>
@@ -64,10 +74,21 @@
       <object>objects\obj_devCom</object>
       <object>objects\obj_devInd</object>
     </objects>
+    <objects name="Menu/Bars">
+      <object>objects\obj_purchaseBar</object>
+      <object>objects\obj_purchaseIcon</object>
+      <object>objects\obj_topBar</object>
+      <object>objects\obj_topBarIcon</object>
+      <object>objects\obj_mapWindow</object>
+      <object>objects\obj_mouse</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_begin</room>
   </rooms>
+  <constants number="1">
+    <constant name="SU">16</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

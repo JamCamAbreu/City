@@ -27,20 +27,23 @@
             <kind>1</kind>
             <string>
 // these lists keep track of each building created:
+ds_waterID = ds_list_create();
+ds_SUID = ds_list_create();
 
-	ds_allBuildingsID = ds_list_create();
-	ds_treesID = ds_list_create();
-	ds_FireSID = ds_list_create();
-	ds_polSID = ds_list_create();
-	ds_schoolID = ds_list_create();
-	ds_hospID = ds_list_create();
-	ds_airportID = ds_list_create();
-	ds_resZoneID = ds_list_create();
-	ds_comZoneID = ds_list_create();
-	ds_indZoneID = ds_list_create();
-	ds_roadID = ds_list_create();
-	ds_powerLineID = ds_list_create();
-	ds_waterID = ds_list_create();
+ds_allBuildingsID = ds_list_create();
+
+ds_treesID = ds_list_create();
+ds_FireSID = ds_list_create();
+ds_polSID = ds_list_create();
+ds_schoolID = ds_list_create();
+ds_hospID = ds_list_create();
+ds_airportID = ds_list_create();
+ds_resZoneID = ds_list_create();
+ds_comZoneID = ds_list_create();
+ds_indZoneID = ds_list_create();
+ds_roadID = ds_list_create();
+ds_powerLineID = ds_list_create();
+
 </string>
           </argument>
         </arguments>

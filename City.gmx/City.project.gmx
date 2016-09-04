@@ -9,6 +9,25 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_SU</sprite>
+    <sprite>sprites\spr_water</sprite>
+    <sprites name="Buildings">
+      <sprite>sprites\spr_tree</sprite>
+      <sprite>sprites\spr_road</sprite>
+      <sprite>sprites\spr_roadPower</sprite>
+      <sprite>sprites\spr_powerLine</sprite>
+      <sprite>sprites\spr_zone</sprite>
+      <sprite>sprites\spr_polStation</sprite>
+      <sprite>sprites\spr_fireStation</sprite>
+      <sprite>sprites\spr_school</sprite>
+      <sprite>sprites\spr_hospital</sprite>
+      <sprite>sprites\spr_nucPlant</sprite>
+      <sprite>sprites\spr_coalPlant</sprite>
+      <sprite>sprites\spr_airport</sprite>
+    </sprites>
+    <sprites name="Zones">
+      <sprite>sprites\spr_zoneR1x1</sprite>
+      <sprite>sprites\spr_dev</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_roomBG</background>
@@ -23,6 +42,28 @@
   <objects name="objects">
     <object>objects\obj_main</object>
     <object>objects\obj_SU</object>
+    <object>objects\obj_IDList</object>
+    <object>objects\obj_water</object>
+    <objects name="Buildings">
+      <object>objects\obj_building</object>
+      <object>objects\obj_tree</object>
+      <object>objects\obj_road</object>
+      <object>objects\obj_powerLine</object>
+      <object>objects\obj_polStation</object>
+      <object>objects\obj_fireStation</object>
+      <object>objects\obj_school</object>
+      <object>objects\obj_hospital</object>
+      <object>objects\obj_nucPlant</object>
+      <object>objects\obj_coalPlant</object>
+      <object>objects\obj_airport</object>
+    </objects>
+    <objects name="Zones">
+      <object>objects\obj_zone</object>
+      <object>objects\obj_dev</object>
+      <object>objects\obj_devRes</object>
+      <object>objects\obj_devCom</object>
+      <object>objects\obj_devInd</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_begin</room>

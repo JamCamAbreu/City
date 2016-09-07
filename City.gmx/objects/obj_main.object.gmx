@@ -25,13 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mouseID = instance_create(mouse_x, mouse_y, obj_mouse);
+            <string>// Controllers/Setup ---------------
+global.mainID = id;
 
+
+// the IDList stores all the ID's of game objects
 IDList = instance_create(x,y, obj_IDList);
 
+// generate the map
+// TODO: pass in a size of map
+// TODO: pass in the amount of trees and water
+    // this can be a slider in the map selection options
+mapGenerator = instance_create(x,y, obj_mapGenerate);
+mapGenerator.IDList = IDList;
 
-scr_mapGenerate(IDList);
 
+
+// Menu/Bars------------------
+
+purchaseBar = instance_create(x, y, obj_purchaseBar);
+topBar = instance_create(x, y, obj_topBar);
+
+
+// Other: ---------------------
+
+// camera:
+camera = instance_create(view_wview/2,view_hview/2, obj_camera);
+
+// the mouse changes depending on the task at hand
+mouseID = instance_create(mouse_x, mouse_y, obj_mouse);
+
+// puts instance count in window boarder:
+debugger = instance_create(x,y, obj_debugger);
 
 </string>
           </argument>

@@ -3,11 +3,169 @@
   <spriteName>spr_purchaseIcon</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-6</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>drawButton = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>var button1X = view_xview + PBAR_BUTTON_1_X;
+var button2X = view_xview + PBAR_BUTTON_2_X;
+var buttonY = view_yview + PBAR_BUTTON_Y; // multiplied to get other button y's
+
+var buttonSprite;
+
+switch (type) {
+
+    case BTYPE_NULL:
+        buttonSprite = spr_purchaseIcon;
+        break;
+        
+
+    case BTYPE_TREES:
+        buttonSprite = spr_PIconTree;
+        x = button1X;
+        y = buttonY+ PBAR_BUTTON_ROW*1;
+        break;
+        
+
+    case BTYPE_ROAD:
+        buttonSprite = spr_PIconRoad;
+        x = button2X;
+        y = buttonY+ PBAR_BUTTON_ROW*1;
+        break;
+        
+
+    case BTYPE_POWERL:
+        buttonSprite = spr_PIconPLine;
+        x = button1X;
+        y = buttonY+ PBAR_BUTTON_ROW*2;
+        break;
+        
+
+    case BTYPE_RZONE:
+        buttonSprite = spr_PIconRZone;
+        x = button2X;
+        y = buttonY+ PBAR_BUTTON_ROW*2;
+        break;
+        
+
+    case BTYPE_CZONE:
+        buttonSprite = spr_PIconCZone;
+        x = button1X;
+        y = buttonY+ PBAR_BUTTON_ROW*3;
+        break;
+        
+
+    case BTYPE_IZONE:
+        buttonSprite = spr_PIconIZone;
+        x = button2X;
+        y = buttonY+ PBAR_BUTTON_ROW*3;
+        break;
+        
+
+    case BTYPE_POLSTATION:
+        buttonSprite = spr_PIconPStation;
+        x = button1X;
+        y = buttonY+ PBAR_BUTTON_ROW*4;
+        break;
+        
+
+    case BTYPE_FIRESTATION:
+        buttonSprite = spr_PIconFStation;
+        x = button2X;
+        y = buttonY+ PBAR_BUTTON_ROW*4;
+        break;
+        
+
+    case BTYPE_SCHOOL:
+        buttonSprite = spr_PIconSchool;
+        x = button1X;
+        y = buttonY+ PBAR_BUTTON_ROW*5;
+        break;
+        
+
+    case BTYPE_COALPLANT:
+        buttonSprite = spr_purchaseIcon;
+        x = button2X;
+        y = buttonY+ PBAR_BUTTON_ROW*5;
+        break;
+        
+
+    case BTYPE_NUCPLANT:
+        buttonSprite = spr_PIconNucPlant;
+        x = button1X;
+        y = buttonY+ PBAR_BUTTON_ROW*6;
+        break;
+        
+
+    case BTYPE_HOSPITAL:
+        buttonSprite = spr_PIconHospital;
+        x = button2X;
+        y = buttonY+ PBAR_BUTTON_ROW*6;
+        break;
+        
+        
+    case BTYPE_AIRPORT:
+        buttonSprite = spr_purchaseIcon;
+        x = button1X;
+        y = buttonY+ PBAR_BUTTON_ROW*7;
+        break;
+        
+    default:
+        buttonSprite = spr_purchaseIcon;
+        break;
+}
+
+if (drawButton)
+    draw_sprite(buttonSprite, image_index, x, y);
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>

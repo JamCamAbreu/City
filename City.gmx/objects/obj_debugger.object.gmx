@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>-8</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>drawTBar = false;
+            <string>instance_count_last = instance_count;
+drawDebug = false; // in draw event
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>window_set_caption("inst: " + string(instance_count) + " | delta: " + string(instance_count - instance_count_last) +  " | fps: " + string(fps)); 
+instance_count_last = instance_count;
 </string>
           </argument>
         </arguments>
@@ -48,27 +73,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if (drawTBar) {
-    var x1 = view_xview;
-    var y1 = view_yview;
-    var x2 = view_xview + view_wview;
-    var y2 = view_yview + TBAR_HEIGHT;
-    
-    draw_rectangle(x1, y1, x2, y2, false);
-    
-    var innerBarColor = make_colour_hsv(0, 15, 15);
-    draw_rectangle_colour(x1, y1 + BAR_PADDING, x2 - BAR_PADDING, y2 - BAR_PADDING, innerBarColor, innerBarColor, innerBarColor, innerBarColor, false);
+            <string>/// Debugging
 
-    draw_set_font(ft_TBarTitle);
-    var textColor = make_colour_hsv(30, 10, 220);
-    draw_text_colour(x1 + BAR_PADDING, y1 + TBAR_TEXT_Y1, "CityName", textColor, textColor, textColor, textColor, 1);
-    // reset font:
-    draw_set_font(ft_default);
+if (drawDebug) {
+    var treeCount = instance_number(obj_tree);
+    var SUCount = instance_number(obj_SU);
     
+    var line = 32; 
+    var indent = 16;
+    
+    draw_text(indent, line*1, "treeCount = " + string(treeCount));
+    draw_text(indent, line*2, "SUCount = " + string(SUCount));
+    //draw_text(indent, line*3, "treeCount = " + string(treeCount));
+    //draw_text(indent, line*4, "treeCount = " + string(treeCount));
+    //draw_text(indent, line*5, "treeCount = " + string(treeCount));
+    //draw_text(indent, line*6, "treeCount = " + string(treeCount));
+    //draw_text(indent, line*7, "treeCount = " + string(treeCount));
 }
-
-
 </string>
           </argument>
         </arguments>

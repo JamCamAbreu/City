@@ -6,8 +6,8 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_SU</sprite>
     <sprite>sprites\spr_water</sprite>
+    <sprite>sprites\spr_ground</sprite>
     <sprites name="Buildings">
       <sprite>sprites\spr_tree</sprite>
       <sprite>sprites\spr_road</sprite>
@@ -28,32 +28,51 @@
     </sprites>
     <sprites name="Menu/Bars">
       <sprite>sprites\spr_purchaseIcon</sprite>
+      <sprite>sprites\spr_PIconTree</sprite>
+      <sprite>sprites\spr_PIconRoad</sprite>
+      <sprite>sprites\spr_PIconPLine</sprite>
+      <sprite>sprites\spr_PIconRZone</sprite>
+      <sprite>sprites\spr_PIconCZone</sprite>
+      <sprite>sprites\spr_PIconIZone</sprite>
+      <sprite>sprites\spr_PIconPStation</sprite>
+      <sprite>sprites\spr_PIconFStation</sprite>
+      <sprite>sprites\spr_PIconSchool</sprite>
+      <sprite>sprites\spr_PIconHospital</sprite>
+      <sprite>sprites\spr_PIconNucPlant</sprite>
       <sprite>sprites\spr_topBarIcon</sprite>
+    </sprites>
+    <sprites name="Controllers/Data Structures">
+      <sprite>sprites\spr_SU</sprite>
+      <sprite>sprites\spr_camera</sprite>
+    </sprites>
+    <sprites name="Other">
       <sprite>sprites\spr_mouse</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background">
-    <background>background\bg_roomBG</background>
-  </backgrounds>
+  <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="MapGenerator">
-      <script>scripts\scr_mapGenerate.gml</script>
-      <script>scripts\scr_generateWater.gml</script>
-      <script>scripts\scr_generateTrees.gml</script>
       <script>scripts\scr_generateSU.gml</script>
       <script>scripts\scr_seed.gml</script>
       <script>scripts\scr_seedGrow.gml</script>
+      <script>scripts\scr_growWater.gml</script>
+      <script>scripts\scr_growOther.gml</script>
+    </scripts>
+    <scripts name="Math">
+      <script>scripts\scr_ease.gml</script>
+      <script>scripts\scr_sinLoop.gml</script>
+    </scripts>
+    <scripts name="Text Processor">
+      <script>scripts\scr_HowManyLines.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\ft_consolas12</font>
+    <font>fonts\ft_default</font>
+    <font>fonts\ft_consolas18</font>
+    <font>fonts\ft_TBarTitle</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_main</object>
-    <object>objects\obj_SU</object>
-    <object>objects\obj_IDList</object>
-    <object>objects\obj_water</object>
     <objects name="Buildings">
       <object>objects\obj_building</object>
       <object>objects\obj_tree</object>
@@ -80,14 +99,56 @@
       <object>objects\obj_topBar</object>
       <object>objects\obj_topBarIcon</object>
       <object>objects\obj_mapWindow</object>
+    </objects>
+    <objects name="Controllers/Data Structures">
+      <object>objects\obj_main</object>
+      <object>objects\obj_SU</object>
+      <object>objects\obj_IDList</object>
+      <object>objects\obj_camera</object>
+      <object>objects\obj_debugger</object>
+      <object>objects\obj_mapGenerate</object>
+    </objects>
+    <objects name="Other/Misc">
       <object>objects\obj_mouse</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_begin</room>
   </rooms>
-  <constants number="1">
+  <constants number="33">
     <constant name="SU">16</constant>
+    <constant name="CAM_SPEED">8</constant>
+    <constant name="VIEW_BOARDER">192</constant>
+    <constant name="CAMERA_ALARM">10</constant>
+    <constant name="CAMERA_ALARM_FAST">5</constant>
+    <constant name="CAMERA_ALARM_SHIFT">3</constant>
+    <constant name="LOAD_BAR_SIZE_X">256</constant>
+    <constant name="LOAD_BAR_SIZE_Y">64</constant>
+    <constant name="LOAD_BAR_INNER_PADDING">4</constant>
+    <constant name="GROW_NORMAL">0</constant>
+    <constant name="GROW_FILL">1</constant>
+    <constant name="PBAR_WIDTH">view_wview/5</constant>
+    <constant name="TBAR_HEIGHT">view_hview/8</constant>
+    <constant name="BAR_PADDING">4</constant>
+    <constant name="PBAR_BUTTON_1_X">BAR_PADDING + 2</constant>
+    <constant name="PBAR_BUTTON_2_X">PBAR_BUTTON_1_X + 32</constant>
+    <constant name="PBAR_BUTTON_Y">BAR_PADDING + 16</constant>
+    <constant name="PBAR_BUTTON_ROW">32</constant>
+    <constant name="TBAR_TEXT_Y1">BAR_PADDING</constant>
+    <constant name="BTYPE_NULL">-1</constant>
+    <constant name="BTYPE_TREES">0</constant>
+    <constant name="BTYPE_ROAD">1</constant>
+    <constant name="BTYPE_POWERL">2</constant>
+    <constant name="BTYPE_RZONE">3</constant>
+    <constant name="BTYPE_CZONE">4</constant>
+    <constant name="BTYPE_IZONE">5</constant>
+    <constant name="BTYPE_POLSTATION">6</constant>
+    <constant name="BTYPE_FIRESTATION">7</constant>
+    <constant name="BTYPE_SCHOOL">8</constant>
+    <constant name="BTYPE_COALPLANT">9</constant>
+    <constant name="BTYPE_NUCPLANT">10</constant>
+    <constant name="BTYPE_HOSPITAL">11</constant>
+    <constant name="BTYPE_AIRPORT">12</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

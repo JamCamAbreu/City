@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-5</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>drawTBar = false;
+            <string>stringList = ds_list_create();
+idList = ds_list_create();
+
 </string>
           </argument>
         </arguments>
@@ -48,27 +50,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if (drawTBar) {
-    var x1 = view_xview;
-    var y1 = view_yview;
-    var x2 = view_xview + view_wview;
-    var y2 = view_yview + TBAR_HEIGHT;
-    
-    draw_rectangle(x1, y1, x2, y2, false);
-    
-    var innerBarColor = make_colour_hsv(0, 15, 15);
-    draw_rectangle_colour(x1, y1 + BAR_PADDING, x2 - BAR_PADDING, y2 - BAR_PADDING, innerBarColor, innerBarColor, innerBarColor, innerBarColor, false);
+            <string>var sizeOfList = ds_list_size(stringList);
 
-    draw_set_font(ft_TBarTitle);
-    var textColor = make_colour_hsv(30, 10, 220);
-    draw_text_colour(x1 + BAR_PADDING, y1 + TBAR_TEXT_Y1, "CityName", textColor, textColor, textColor, textColor, 1);
-    // reset font:
-    draw_set_font(ft_default);
-    
+// draw each variable in our list onto the screen:
+for (var i = 0; i &lt; sizeOfList; i++) {
+    var curID = ds_list_find_value(idList,i);
+    var variable = ds_list_find_value(stringList, i);
+    var value = curID.variable;
+    draw_text_colour(16, (i+1)*16, string(value), c_white, c_white, c_white, c_white, 1);
 }
-
-
 </string>
           </argument>
         </arguments>

@@ -44,6 +44,8 @@ ds_indZoneID = ds_list_create();
 ds_roadID = ds_list_create();
 ds_powerLineID = ds_list_create();
 
+// Bars:
+ds_PBarID = ds_list_create();
 </string>
           </argument>
         </arguments>

@@ -21,6 +21,7 @@
       <sprite>sprites\spr_nucPlant</sprite>
       <sprite>sprites\spr_coalPlant</sprite>
       <sprite>sprites\spr_airport</sprite>
+      <sprite>sprites\spr_bulldozer</sprite>
     </sprites>
     <sprites name="Zones">
       <sprite>sprites\spr_zoneR1x1</sprite>
@@ -39,7 +40,9 @@
       <sprite>sprites\spr_PIconSchool</sprite>
       <sprite>sprites\spr_PIconHospital</sprite>
       <sprite>sprites\spr_PIconNucPlant</sprite>
+      <sprite>sprites\spr_PIconCoalPlant</sprite>
       <sprite>sprites\spr_topBarIcon</sprite>
+      <sprite>sprites\sprPIconSelect</sprite>
     </sprites>
     <sprites name="Controllers/Data Structures">
       <sprite>sprites\spr_SU</sprite>
@@ -47,6 +50,7 @@
     </sprites>
     <sprites name="Other">
       <sprite>sprites\spr_mouse</sprite>
+      <sprite>sprites\spr_rightHere</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -65,6 +69,32 @@
     </scripts>
     <scripts name="Text Processor">
       <script>scripts\scr_HowManyLines.gml</script>
+    </scripts>
+    <scripts name="Modes">
+      <scripts name="modeNormal">
+        <script>scripts\scr_modeNormal.gml</script>
+      </scripts>
+      <scripts name="modeSelect">
+        <script>scripts\scr_modeSelect.gml</script>
+        <script>scripts\scr_selectionMove.gml</script>
+        <script>scripts\scr_selectComplete.gml</script>
+        <script>scripts\scr_destroySelect.gml</script>
+      </scripts>
+      <scripts name="modePlacement">
+        <script>scripts\scr_modePlacement.gml</script>
+        <script>scripts\scr_deleteSelectedObject.gml</script>
+        <script>scripts\scr_placeBuilding.gml</script>
+      </scripts>
+      <script>scripts\scr_modeAlarmReset.gml</script>
+    </scripts>
+    <scripts name="Movement Camera/placement">
+      <script>scripts\scr_moveAlarm0.gml</script>
+      <script>scripts\scr_moveAlarm1.gml</script>
+      <script>scripts\scr_moveAlarm2.gml</script>
+      <script>scripts\scr_move.gml</script>
+      <script>scripts\scr_moveAlarmReset.gml</script>
+      <script>scripts\scr_moveKeepCentered.gml</script>
+      <script>scripts\scr_moveKeepInRoom.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -85,6 +115,7 @@
       <object>objects\obj_nucPlant</object>
       <object>objects\obj_coalPlant</object>
       <object>objects\obj_airport</object>
+      <object>objects\obj_bulldozer</object>
     </objects>
     <objects name="Zones">
       <object>objects\obj_zone</object>
@@ -99,6 +130,8 @@
       <object>objects\obj_topBar</object>
       <object>objects\obj_topBarIcon</object>
       <object>objects\obj_mapWindow</object>
+      <object>objects\obj_PBarSelect</object>
+      <object>objects\obj_placement</object>
     </objects>
     <objects name="Controllers/Data Structures">
       <object>objects\obj_main</object>
@@ -115,10 +148,10 @@
   <rooms name="rooms">
     <room>rooms\rm_begin</room>
   </rooms>
-  <constants number="33">
+  <constants number="38">
     <constant name="SU">16</constant>
     <constant name="CAM_SPEED">8</constant>
-    <constant name="VIEW_BOARDER">192</constant>
+    <constant name="VIEW_BOARDER">16*12</constant>
     <constant name="CAMERA_ALARM">10</constant>
     <constant name="CAMERA_ALARM_FAST">5</constant>
     <constant name="CAMERA_ALARM_SHIFT">3</constant>
@@ -129,8 +162,8 @@
     <constant name="GROW_FILL">1</constant>
     <constant name="PBAR_WIDTH">view_wview/5</constant>
     <constant name="TBAR_HEIGHT">view_hview/8</constant>
-    <constant name="BAR_PADDING">4</constant>
-    <constant name="PBAR_BUTTON_1_X">BAR_PADDING + 2</constant>
+    <constant name="BAR_PADDING">2</constant>
+    <constant name="PBAR_BUTTON_1_X">BAR_PADDING + 6</constant>
     <constant name="PBAR_BUTTON_2_X">PBAR_BUTTON_1_X + 32</constant>
     <constant name="PBAR_BUTTON_Y">BAR_PADDING + 16</constant>
     <constant name="PBAR_BUTTON_ROW">32</constant>
@@ -149,6 +182,11 @@
     <constant name="BTYPE_NUCPLANT">10</constant>
     <constant name="BTYPE_HOSPITAL">11</constant>
     <constant name="BTYPE_AIRPORT">12</constant>
+    <constant name="BTYPE_BULLDOZER">13</constant>
+    <constant name="MODE_NORMAL">0</constant>
+    <constant name="MODE_SELECT">1</constant>
+    <constant name="MODE_PLACEMENT">2</constant>
+    <constant name="MODE_CHECK_ALARM">4</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

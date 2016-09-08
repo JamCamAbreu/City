@@ -125,7 +125,7 @@ switch (type) {
         
 
     case BTYPE_COALPLANT:
-        buttonSprite = spr_purchaseIcon;
+        buttonSprite = spr_PIconCoalPlant;
         x = button2X;
         y = buttonY+ PBAR_BUTTON_ROW*5;
         break;
@@ -148,6 +148,13 @@ switch (type) {
     case BTYPE_AIRPORT:
         buttonSprite = spr_purchaseIcon;
         x = button1X;
+        y = buttonY+ PBAR_BUTTON_ROW*7;
+        break;
+        
+        
+    case BTYPE_BULLDOZER:
+        buttonSprite = spr_purchaseIcon;
+        x = button2X;
         y = buttonY+ PBAR_BUTTON_ROW*7;
         break;
         

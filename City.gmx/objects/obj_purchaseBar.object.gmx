@@ -95,6 +95,10 @@ buttonAirport = instance_create(x,y, obj_purchaseIcon);
 buttonAirport.type = BTYPE_AIRPORT;
 ds_list_add(PBarID, buttonAirport);
 
+// Bulldozer
+buttonBulldozer = instance_create(x,y, obj_purchaseIcon);
+buttonBulldozer.type = BTYPE_BULLDOZER;
+ds_list_add(PBarID, buttonBulldozer);
 
 
 </string>
@@ -127,10 +131,23 @@ if (drawPBar) {
     var x2 = view_xview + PBAR_WIDTH;
     var y2 = view_yview + view_hview;
     
-    draw_rectangle(x1, y1, x2, y2, false);
-    
+    var selectModeColor = c_yellow;
     var innerBarColor = make_colour_hsv(0, 15, 15);
-    draw_rectangle_colour(x1, y1, x2 - BAR_PADDING, y2 - BAR_PADDING, innerBarColor, innerBarColor, innerBarColor, innerBarColor, false);
+    var innerBarSelectModeColor = make_colour_hsv(0, 15, 25);
+    
+    // highlight bar for select mode:
+    if (global.mainID.mode == MODE_SELECT) {
+        draw_rectangle_colour(x1, y1, x2, y2, selectModeColor, selectModeColor, selectModeColor, selectModeColor, false);
+        draw_rectangle_colour(x1 + BAR_PADDING, y1 + BAR_PADDING, x2 - BAR_PADDING, y2 - BAR_PADDING, innerBarSelectModeColor, innerBarSelectModeColor, innerBarSelectModeColor, innerBarSelectModeColor, false);
+    }
+    else { // other modes:
+        draw_rectangle(x1, y1, x2, y2, false);
+        draw_rectangle_colour(x1 + BAR_PADDING, y1 + BAR_PADDING, x2 - BAR_PADDING, y2 - BAR_PADDING, innerBarColor, innerBarColor, innerBarColor, innerBarColor, false);
+    }
+    
+
+    
+    
 
 }
 

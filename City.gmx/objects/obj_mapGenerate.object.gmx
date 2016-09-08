@@ -159,7 +159,7 @@ if (!SUComplete) {
 if (!waterComplete) {
     drawLoadWater = true;
     // begin with seeds:
-    var seedAmount = irandom_range(192, 256); // (lower = more chance)
+    var seedAmount = irandom_range(256, 384); // (lower = more chance)
     scr_seed(obj_SU, seedAmount); // use SU for water
     // Grow water seeds:
     seedGrowAgain = irandom_range(2,6);

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-12</depth>
+  <depth>-8</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,43 +25,54 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Controllers/Setup ---------------
-global.mainID = id;
-
-
-// the IDList stores all the ID's of game objects
-IDList = instance_create(x,y, obj_IDList);
-
-// generate the map
-// TODO: pass in a size of map
-// TODO: pass in the amount of trees and water
-    // this can be a slider in the map selection options
-mapGenerator = instance_create(x,y, obj_mapGenerate);
-mapGenerator.IDList = IDList;
-
-
-
-// Menu/Bars------------------
-
-purchaseBar = instance_create(x, y, obj_purchaseBar);
-topBar = instance_create(x, y, obj_topBar);
-
-mode = MODE_NORMAL; // default
-modeCheck = true;
-currentSelection = BTYPE_TREES; // default
-ds_selectedBuilding = ds_list_create();
-
-// Other: ---------------------
-
-// camera:
-camera = instance_create(view_wview/2,view_hview/2, obj_camera);
-
-// the mouse changes depending on the task at hand
-mouseID = instance_create(mouse_x, mouse_y, obj_mouse);
-
-// puts instance count in window boarder:
-debugger = instance_create(x,y, obj_debugger);
-
+            <string>type = BTYPE_NULL;
+image_speed = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scr_moveAlarm2();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scr_moveAlarm1();
 </string>
           </argument>
         </arguments>
@@ -84,10 +95,7 @@ debugger = instance_create(x,y, obj_debugger);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// mode checking:
-// this prevents modes from interfearing with each other:
-
-modeCheck = true;
+            <string>scr_moveAlarm0();
 </string>
           </argument>
         </arguments>
@@ -110,54 +118,15 @@ modeCheck = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check_pressed(ord('R'))) {
-    room_restart();
-}
+            <string>// only move in MODE_PLACEMENT
 
-// MODES----------------------
-if (modeCheck) {
-    switch (mode) {
-        case MODE_NORMAL:
-            scr_modeNormal();
-            break;
-            
-        case MODE_SELECT:
-            scr_modeSelect();
-            break;
-            
-        case MODE_PLACEMENT:    
-            scr_modePlacement();
-            break;
-            
-        default:
-            break;
-    }
-}
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>randomize();
+if (global.mainID.mode == MODE_PLACEMENT)
+    scr_move();
+else
+    scr_moveAlarmReset();
+    
+// don't go outside the room boundaries:
+scr_moveKeepInRoom();
 </string>
           </argument>
         </arguments>
@@ -180,29 +149,79 @@ if (modeCheck) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-
-var color = c_white;
-draw_set_font(ft_default);
-
-var myString;
-switch (mode) {
-    case MODE_NORMAL:
-        myString = "MODE_NORMAL";
-        break;
-    case MODE_SELECT:
-        myString = "MODE_SELECT";
-        break;
-    case MODE_PLACEMENT:
-        myString = "MODE_PLACEMENT";
-        break;
-
-}
-draw_text_colour(view_xview + view_wview/3, view_yview + 32*1, "Mode: " + myString, color, color, color, color, 1);
-
-draw_set_font(ft_default);
-*/
-
+            <string>if (type != BTYPE_NULL) {
+    switch (type) {
+            
+        case BTYPE_TREES:
+            placementSprite = spr_tree;
+            break;
+            
+        case BTYPE_ROAD:
+            placementSprite = spr_road;
+            break;
+    
+        case BTYPE_POWERL:
+            placementSprite = spr_powerLine;
+            break;
+    
+        case BTYPE_RZONE: // SPECIAL CASE
+            placementSprite = spr_zone;
+            break;
+    
+        case BTYPE_CZONE: // SPECIAL CASE
+            placementSprite = spr_zone;
+            break;
+            
+        case BTYPE_IZONE: // SPECIAL CASE
+            placementSprite = spr_zone;
+            break;
+    
+        case BTYPE_POLSTATION:
+            placementSprite = spr_polStation;
+            break;
+    
+        case BTYPE_FIRESTATION:
+            placementSprite = spr_fireStation;
+            break;
+    
+        case BTYPE_SCHOOL:
+            placementSprite = spr_school;
+            break;
+    
+        case BTYPE_COALPLANT:
+            placementSprite = spr_coalPlant;
+            break;
+            
+        case BTYPE_NUCPLANT:
+            placementSprite = spr_nucPlant;
+            break;
+            
+        case BTYPE_HOSPITAL:
+            placementSprite = spr_hospital;
+            break;
+            
+        case BTYPE_AIRPORT:
+            placementSprite = spr_airport;
+            break;
+            
+        case BTYPE_BULLDOZER:
+            placementSprite = spr_bulldozer;
+            break;
+            
+        default:
+            placementSprite = spr_purchaseIcon;
+            break;
+    } // end switch
+    
+    // TODO:
+    //var placementColor;
+    // if I have enough money:
+        // placementColor = c_green;
+    // if I don't have enough money
+        // placementColor = c_red;
+    draw_sprite_ext(placementSprite, image_index, x, y, 1, 1, 0, c_white, 0.6);
+    
+} // end if type != BTYPE_NULL
 
 </string>
           </argument>

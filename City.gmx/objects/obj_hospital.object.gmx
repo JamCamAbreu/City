@@ -3,8 +3,8 @@
   <spriteName>spr_hospital</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
-  <persistent>0</persistent>
+  <depth>-2</depth>
+  <persistent>-1</persistent>
   <parentName>obj_building</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events/>

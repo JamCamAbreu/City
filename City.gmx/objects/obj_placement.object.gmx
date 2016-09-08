@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>type = BTYPE_NULL;
 image_speed = 0;
+seasonSprite = global.season;
+image_index = seasonSprite;
 </string>
           </argument>
         </arguments>
@@ -127,6 +129,8 @@ else
     
 // don't go outside the room boundaries:
 scr_moveKeepInRoom();
+
+
 </string>
           </argument>
         </arguments>
@@ -219,7 +223,12 @@ scr_moveKeepInRoom();
         // placementColor = c_green;
     // if I don't have enough money
         // placementColor = c_red;
-    draw_sprite_ext(placementSprite, image_index, x, y, 1, 1, 0, c_white, 0.6);
+        
+    // update sprite after curtain closes:
+    if (global.curtainClosed)
+        seasonSprite = global.season;
+        
+    draw_sprite_ext(placementSprite, seasonSprite, x, y, 1, 1, 0, c_white, 0.6);
     
 } // end if type != BTYPE_NULL
 

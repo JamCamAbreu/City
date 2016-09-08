@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,14 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
-seasonSprite = global.season;
+            <string>curAlpha = 0;
+
+fadeInComplete = false;
+fadeOutComplete = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -49,11 +51,14 @@ seasonSprite = global.season;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-if (global.curtainClosed) // only change when screen is black:
-    seasonSprite = scr_seasonSpriteChange();
-
-image_index = seasonSprite;
+            <string>if (!fadeInComplete) 
+    fadeInComplete = scr_fadeIn();
+else
+    fadeOutComplete = scr_fadeOut();
+    
+// destroy self when complete:
+if (fadeOutComplete)
+    instance_destroy();
 </string>
           </argument>
         </arguments>

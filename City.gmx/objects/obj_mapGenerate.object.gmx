@@ -232,6 +232,8 @@ if (waterComplete &amp;&amp; treesComplete &amp;&amp; SUComplete &amp;&amp; view
         var PButtonID = ds_list_find_value(PBarID, i);
         PButtonID.drawButton = true;
     }
+    with (global.mainID)
+        alarm[1] = CYCLE_UPDATE_SPEED;
     
     instance_destroy();
 }

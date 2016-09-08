@@ -34,6 +34,14 @@ drawTopBarInfo = false;
 // money system:
 global.money = 0;
 
+// cycles/date system:
+global.year = 1990;
+global.season = SEASON_SUMMER;
+global.month = MONTH_JUL;
+global.cycleCount = 0;
+global.curtainClosed = false;
+
+
 // the IDList stores all the ID's of game objects
 IDList = instance_create(x,y, obj_IDList);
 
@@ -67,6 +75,47 @@ mouseID = instance_create(mouse_x, mouse_y, obj_mouse);
 // puts instance count in window boarder:
 debugger = instance_create(x,y, obj_debugger);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Cycle updating
+
+/*
+Every 8 cycles are a month. 
+Each season is broken into 24 cycles. 
+Each year is broken into 72 cycles
+
+Cycles are 3 seconds long on normal speed. (60 frames/second, so 180 frames). 
+
+That means that: 
+    every month on normal speed is 24 seconds, 
+    every season is 72 seconds, 
+    every year is 288 seconds or about 5 minutes.
+*/
+
+scr_cycleUpdate();
+
+// update every 3 seconds:
+alarm[1] = CYCLE_UPDATE_SPEED;
 </string>
           </argument>
         </arguments>
@@ -208,6 +257,14 @@ draw_text_colour(view_xview + view_wview/3, view_yview + 32*1, "Mode: " + myStri
 draw_set_font(ft_default);
 */
 
+/*
+draw_set_font(ft_default);
+var color = c_white;
+draw_text_colour(view_xview + view_wview/3, view_yview + 32*1, "Year: " + string(global.year), color, color, color, color, 1);
+draw_text_colour(view_xview + view_wview/3, view_yview + 32*2, "Season: " + string(global.season), color, color, color, color, 1);
+draw_text_colour(view_xview + view_wview/3, view_yview + 32*3, "Month: " + string(global.month), color, color, color, color, 1);
+draw_text_colour(view_xview + view_wview/3, view_yview + 32*4, "Cycle: " + string(global.cycleCount), color, color, color, color, 1);
+*/
 
 </string>
           </argument>

@@ -27,80 +27,7 @@
             <kind>1</kind>
             <string>drawPBar = false;
 
-var IDList = global.mainID.IDList;
-PBarID = IDList.ds_PBarID;
-
-// TREES
-buttonTrees = instance_create(x,y, obj_purchaseIcon);
-buttonTrees.type = BTYPE_TREES;
-ds_list_add(PBarID, buttonTrees);
-
-// ROAD
-buttonRoad = instance_create(x,y, obj_purchaseIcon);
-buttonRoad.type = BTYPE_ROAD;
-ds_list_add(PBarID, buttonRoad);
-
-// POWER LINE
-buttonPowerL = instance_create(x,y, obj_purchaseIcon);
-buttonPowerL.type = BTYPE_POWERL;
-ds_list_add(PBarID, buttonPowerL);
-
-// RESIDENT ZONE
-buttonRZone = instance_create(x,y, obj_purchaseIcon);
-buttonRZone.type = BTYPE_RZONE;
-ds_list_add(PBarID, buttonRZone);
-
-// COMMERCIAL ZONE
-buttonCZone = instance_create(x,y, obj_purchaseIcon);
-buttonCZone.type = BTYPE_CZONE;
-ds_list_add(PBarID, buttonCZone);
-
-// INDUSTRIAL ZONE
-buttonIZone = instance_create(x,y, obj_purchaseIcon);
-buttonIZone.type = BTYPE_IZONE;
-ds_list_add(PBarID, buttonIZone);
-
-// POLICE STATION
-buttonPolStation = instance_create(x,y, obj_purchaseIcon);
-buttonPolStation.type = BTYPE_POLSTATION;
-ds_list_add(PBarID, buttonPolStation);
-
-// FIRE STATION
-buttonFireStation = instance_create(x,y, obj_purchaseIcon);
-buttonFireStation.type = BTYPE_FIRESTATION;
-ds_list_add(PBarID, buttonFireStation);
-
-// SCHOOL
-buttonSchool = instance_create(x,y, obj_purchaseIcon);
-buttonSchool.type = BTYPE_SCHOOL;
-ds_list_add(PBarID, buttonSchool);
-
-// COAL PLANT
-buttonCoalPlant = instance_create(x,y, obj_purchaseIcon);
-buttonCoalPlant.type = BTYPE_COALPLANT;
-ds_list_add(PBarID, buttonCoalPlant);
-
-// NUCLEAR PLANT
-buttonNucPlant = instance_create(x,y, obj_purchaseIcon);
-buttonNucPlant.type = BTYPE_NUCPLANT;
-ds_list_add(PBarID, buttonNucPlant);
-
-// HOSPITAL
-buttonHospital = instance_create(x,y, obj_purchaseIcon);
-buttonHospital.type = BTYPE_HOSPITAL;
-ds_list_add(PBarID, buttonHospital);
-
-// AIRPORT
-buttonAirport = instance_create(x,y, obj_purchaseIcon);
-buttonAirport.type = BTYPE_AIRPORT;
-ds_list_add(PBarID, buttonAirport);
-
-// Bulldozer
-buttonBulldozer = instance_create(x,y, obj_purchaseIcon);
-buttonBulldozer.type = BTYPE_BULLDOZER;
-ds_list_add(PBarID, buttonBulldozer);
-
-
+scr_PBarIconsCreate();
 </string>
           </argument>
         </arguments>
@@ -124,31 +51,8 @@ ds_list_add(PBarID, buttonBulldozer);
           <argument>
             <kind>1</kind>
             <string>
-if (drawPBar) {
-    // place BELOW the top bar
-    var x1 = view_xview;
-    var y1 = view_yview + TBAR_HEIGHT;
-    var x2 = view_xview + PBAR_WIDTH;
-    var y2 = view_yview + view_hview;
-    
-    var selectModeColor = c_yellow;
-    var innerBarColor = make_colour_hsv(0, 15, 15);
-    var innerBarSelectModeColor = make_colour_hsv(0, 15, 25);
-    
-    // highlight bar for select mode:
-    if (global.mainID.mode == MODE_SELECT) {
-        draw_rectangle_colour(x1, y1, x2, y2, selectModeColor, selectModeColor, selectModeColor, selectModeColor, false);
-        draw_rectangle_colour(x1 + BAR_PADDING, y1 + BAR_PADDING, x2 - BAR_PADDING, y2 - BAR_PADDING, innerBarSelectModeColor, innerBarSelectModeColor, innerBarSelectModeColor, innerBarSelectModeColor, false);
-    }
-    else { // other modes:
-        draw_rectangle(x1, y1, x2, y2, false);
-        draw_rectangle_colour(x1 + BAR_PADDING, y1 + BAR_PADDING, x2 - BAR_PADDING, y2 - BAR_PADDING, innerBarColor, innerBarColor, innerBarColor, innerBarColor, false);
-    }
-    
-
-    
-    
-
+if (drawPBar) {   
+    scr_PBarDrawBar();
 }
 
 

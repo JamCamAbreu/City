@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>drawTBar = false;
+
+// create 
 </string>
           </argument>
         </arguments>
@@ -49,23 +51,19 @@
           <argument>
             <kind>1</kind>
             <string>
-if (drawTBar) {
-    var x1 = view_xview;
-    var y1 = view_yview;
-    var x2 = view_xview + view_wview;
-    var y2 = view_yview + TBAR_HEIGHT;
-    
-    draw_rectangle(x1, y1, x2, y2, false);
-    
-    var innerBarColor = make_colour_hsv(0, 15, 15);
-    draw_rectangle_colour(x1, y1 + BAR_PADDING, x2 - BAR_PADDING, y2 - BAR_PADDING, innerBarColor, innerBarColor, innerBarColor, innerBarColor, false);
+if (drawTBar) {  
+    // draw rectangles:
+    scr_TBarDrawBar();
 
-    draw_set_font(ft_TBarTitle);
-    var textColor = make_colour_hsv(30, 10, 220);
-    draw_text_colour(x1 + BAR_PADDING, y1 + TBAR_TEXT_Y1, "CityName", textColor, textColor, textColor, textColor, 1);
-    // reset font:
-    draw_set_font(ft_default);
+    // draw title:
+    scr_TBarDrawTitle();
     
+    // draw date:
+    scr_TBarDrawDate();
+    
+    // draw money:
+    scr_TBarDrawMoney();
+
 }
 
 

@@ -28,11 +28,16 @@
             <string>// Controllers/Setup ---------------
 global.mainID = id;
 
+// top bar:
+drawTopBarInfo = false;
+
+// money system:
+global.money = 0;
 
 // the IDList stores all the ID's of game objects
 IDList = instance_create(x,y, obj_IDList);
 
-// generate the map
+// generate the map------------------
 // TODO: pass in a size of map
 // TODO: pass in the amount of trees and water
     // this can be a slider in the map selection options

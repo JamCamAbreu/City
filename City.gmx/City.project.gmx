@@ -96,11 +96,25 @@
       <script>scripts\scr_moveKeepCentered.gml</script>
       <script>scripts\scr_moveKeepInRoom.gml</script>
     </scripts>
+    <scripts name="Menu/Bars">
+      <scripts name="TBar">
+        <script>scripts\scr_TBarDrawBar.gml</script>
+        <script>scripts\scr_TBarDrawTitle.gml</script>
+        <script>scripts\scr_TBarDrawDate.gml</script>
+        <script>scripts\scr_TBarDrawMoney.gml</script>
+        <script>scripts\scr_moneyPlaceHolders.gml</script>
+      </scripts>
+      <scripts name="PBar">
+        <script>scripts\scr_PBarDrawBar.gml</script>
+        <script>scripts\scr_PBarIconsCreate.gml</script>
+      </scripts>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\ft_default</font>
     <font>fonts\ft_consolas18</font>
     <font>fonts\ft_TBarTitle</font>
+    <font>fonts\ft_TBarDate</font>
   </fonts>
   <objects name="objects">
     <objects name="Buildings">
@@ -148,7 +162,7 @@
   <rooms name="rooms">
     <room>rooms\rm_begin</room>
   </rooms>
-  <constants number="38">
+  <constants number="41">
     <constant name="SU">16</constant>
     <constant name="CAM_SPEED">8</constant>
     <constant name="VIEW_BOARDER">16*12</constant>
@@ -168,6 +182,9 @@
     <constant name="PBAR_BUTTON_Y">BAR_PADDING + 16</constant>
     <constant name="PBAR_BUTTON_ROW">32</constant>
     <constant name="TBAR_TEXT_Y1">BAR_PADDING</constant>
+    <constant name="TBAR_TEXT_Y2">TBAR_TEXT_Y1 + 22</constant>
+    <constant name="TBAR_TITLE_X">PBAR_BUTTON_1_X</constant>
+    <constant name="TBAR_MONEY_X">view_wview*(0.75)</constant>
     <constant name="BTYPE_NULL">-1</constant>
     <constant name="BTYPE_TREES">0</constant>
     <constant name="BTYPE_ROAD">1</constant>

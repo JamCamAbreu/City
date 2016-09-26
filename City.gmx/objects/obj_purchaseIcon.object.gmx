@@ -146,7 +146,7 @@ switch (type) {
         
         
     case BTYPE_AIRPORT:
-        buttonSprite = spr_purchaseIcon;
+        buttonSprite = spr_PIconAirport;
         x = button1X;
         y = buttonY+ PBAR_BUTTON_ROW*7;
         break;

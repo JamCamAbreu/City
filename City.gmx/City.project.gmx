@@ -41,6 +41,7 @@
       <sprite>sprites\spr_PIconHospital</sprite>
       <sprite>sprites\spr_PIconNucPlant</sprite>
       <sprite>sprites\spr_PIconCoalPlant</sprite>
+      <sprite>sprites\spr_PIconAirport</sprite>
       <sprite>sprites\spr_topBarIcon</sprite>
       <sprite>sprites\sprPIconSelect</sprite>
     </sprites>
@@ -103,6 +104,8 @@
         <script>scripts\scr_TBarDrawDate.gml</script>
         <script>scripts\scr_TBarDrawMoney.gml</script>
         <script>scripts\scr_moneyPlaceHolders.gml</script>
+        <script>scripts\scr_moneyCommaCount.gml</script>
+        <script>scripts\scr_moneyString.gml</script>
       </scripts>
       <scripts name="PBar">
         <script>scripts\scr_PBarDrawBar.gml</script>
@@ -197,7 +200,7 @@
     <constant name="TBAR_TEXT_Y1">BAR_PADDING</constant>
     <constant name="TBAR_TEXT_Y2">TBAR_TEXT_Y1 + 22</constant>
     <constant name="TBAR_TITLE_X">PBAR_BUTTON_1_X</constant>
-    <constant name="TBAR_MONEY_X">view_wview*(0.75)</constant>
+    <constant name="TBAR_MONEY_X">view_wview*(0.65)</constant>
     <constant name="BTYPE_NULL">-1</constant>
     <constant name="BTYPE_TREES">0</constant>
     <constant name="BTYPE_ROAD">1</constant>
@@ -233,7 +236,7 @@
     <constant name="SEASON_WINTER">1</constant>
     <constant name="SEASON_SPRING">2</constant>
     <constant name="SEASON_SUMMER">3</constant>
-    <constant name="CYCLE_UPDATE_SPEED">15</constant>
+    <constant name="CYCLE_UPDATE_SPEED">60*3</constant>
     <constant name="MAX_CYCLES">7</constant>
     <constant name="MAX_MONTHS">11</constant>
     <constant name="MAX_SEASON">3</constant>

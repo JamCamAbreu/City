@@ -32,7 +32,7 @@ global.mainID = id;
 drawTopBarInfo = false;
 
 // money system:
-global.money = 0;
+global.money = 20000;
 
 // cycles/date system:
 global.year = 1990;
@@ -167,6 +167,7 @@ modeCheck = true;
             <string>if (keyboard_check_pressed(ord('R'))) {
     room_restart();
 }
+
 
 // MODES----------------------
 if (modeCheck) {

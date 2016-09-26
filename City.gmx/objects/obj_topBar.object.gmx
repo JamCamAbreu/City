@@ -63,6 +63,9 @@ if (drawTBar) {
     
     // draw money:
     scr_TBarDrawMoney();
+    
+    // draw population:
+    scr_TBarDrawPop();
 
 }
 

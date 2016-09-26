@@ -34,6 +34,9 @@ drawTopBarInfo = false;
 // money system:
 global.money = 20000;
 
+// population
+global.population = 0;
+
 // cycles/date system:
 global.year = 1990;
 global.season = SEASON_SUMMER;
@@ -167,7 +170,6 @@ modeCheck = true;
             <string>if (keyboard_check_pressed(ord('R'))) {
     room_restart();
 }
-
 
 // MODES----------------------
 if (modeCheck) {

@@ -103,9 +103,12 @@
         <script>scripts\scr_TBarDrawTitle.gml</script>
         <script>scripts\scr_TBarDrawDate.gml</script>
         <script>scripts\scr_TBarDrawMoney.gml</script>
-        <script>scripts\scr_moneyPlaceHolders.gml</script>
-        <script>scripts\scr_moneyCommaCount.gml</script>
-        <script>scripts\scr_moneyString.gml</script>
+        <script>scripts\scr_TBarDrawPop.gml</script>
+        <scripts name="Functions">
+          <script>scripts\scr_addCommas.gml</script>
+          <script>scripts\scr_CommaCount.gml</script>
+          <script>scripts\scr_PlaceHolders.gml</script>
+        </scripts>
       </scripts>
       <scripts name="PBar">
         <script>scripts\scr_PBarDrawBar.gml</script>

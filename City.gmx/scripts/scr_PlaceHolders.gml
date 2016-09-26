@@ -1,21 +1,21 @@
 var placeHolders = "....."; // possible to reach 99,999,999
 
-if (global.money < 10000000)
+if (argument0 < 10000000)
     placeHolders += ".";
-if (global.money < 1000000)
+if (argument0 < 1000000)
     placeHolders += ".";
-if (global.money < 100000) 
+if (argument0 < 100000) 
     placeHolders += ".";
-if (global.money < 10000) 
+if (argument0 < 10000) 
     placeHolders += ".";
-if (global.money < 1000)
+if (argument0 < 1000)
     placeHolders += ".";
-if (global.money < 100) 
+if (argument0 < 100) 
     placeHolders += ".";
-if (global.money < 10)  
+if (argument0 < 10)  
     placeHolders += ".";
     
-var commaCount = scr_moneyCommaCount();
+var commaCount = scr_CommaCount(argument0);
     
 // get rid of place holders to fit comma's:
 placeHolders = string_delete(placeHolders, 1, commaCount); // it's all just the same character, so start at pos 1

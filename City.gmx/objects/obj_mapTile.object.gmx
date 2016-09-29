@@ -25,31 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-// these lists keep track of each building created:
-ds_waterID = ds_list_create();
-
-var SUWidth = round(room_width/16);
-var SUHeight = round(room_height/16);
-
-ds_SUID = ds_grid_create(SUWidth, SUHeight);
-
-ds_allBuildingsID = ds_list_create();
-
-ds_treesID = ds_list_create();
-ds_FireSID = ds_list_create();
-ds_polSID = ds_list_create();
-ds_schoolID = ds_list_create();
-ds_hospID = ds_list_create();
-ds_airportID = ds_list_create();
-ds_resZoneID = ds_list_create();
-ds_comZoneID = ds_list_create();
-ds_indZoneID = ds_list_create();
-ds_roadID = ds_list_create();
-ds_powerLineID = ds_list_create();
-
-// Bars:
-ds_PBarID = ds_list_create();
+            <string>tileColor = c_black; // initial value, changed later
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(tileColor);
+draw_rectangle(x, y, x + MAP_TILE_SIZE, y + MAP_TILE_SIZE, false);
+draw_set_color(c_black);
 </string>
           </argument>
         </arguments>

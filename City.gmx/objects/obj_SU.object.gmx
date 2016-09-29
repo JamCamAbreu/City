@@ -26,7 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
+
+// initial values:
 isWater = false;
+SU_x = 0;
+SU_y = 0;
+tileColor = c_black;
 
 seasonSprite = global.season;
 </string>
@@ -79,6 +84,9 @@ seasonSprite = global.season;
     draw_sprite(spr_water, seasonSprite, x,y);
 else 
     draw_sprite(spr_ground, seasonSprite, x,y);
+    
+    
+
 </string>
           </argument>
         </arguments>

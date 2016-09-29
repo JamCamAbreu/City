@@ -47,7 +47,6 @@ global.curtainClosed = false;
 
 // the IDList stores all the ID's of game objects
 IDList = instance_create(x,y, obj_IDList);
-
 // generate the map------------------
 // TODO: pass in a size of map
 // TODO: pass in the amount of trees and water
@@ -77,6 +76,11 @@ mouseID = instance_create(mouse_x, mouse_y, obj_mouse);
 
 // puts instance count in window boarder:
 debugger = instance_create(x,y, obj_debugger);
+
+// debugging:
+mapWindow = instance_create(view_wview/2, view_hview/2, obj_mapWindow);
+mapWindow.IDList = IDList;
+
 
 </string>
           </argument>
@@ -171,6 +175,7 @@ modeCheck = true;
     room_restart();
 }
 
+
 // MODES----------------------
 if (modeCheck) {
     switch (mode) {
@@ -237,7 +242,8 @@ if (modeCheck) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
+            <string>
+/*
 
 var color = c_white;
 draw_set_font(ft_default);

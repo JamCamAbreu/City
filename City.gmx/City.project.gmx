@@ -181,7 +181,7 @@
   <rooms name="rooms">
     <room>rooms\rm_begin</room>
   </rooms>
-  <constants number="61">
+  <constants number="64">
     <constant name="SU">16</constant>
     <constant name="CAM_SPEED">8</constant>
     <constant name="VIEW_BOARDER">16*12</constant>
@@ -243,6 +243,9 @@
     <constant name="MAX_CYCLES">7</constant>
     <constant name="MAX_MONTHS">11</constant>
     <constant name="MAX_SEASON">3</constant>
+    <constant name="MAP_WINDOW_ALARM">60*3</constant>
+    <constant name="MAP_TILE_SIZE">1</constant>
+    <constant name="MAP_WINDOW_PADDING">16</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

@@ -3,11 +3,185 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-15</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
-  <events/>
+  <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>obj_mapWindow</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+canDraw = false;
+tileColor = c_black; // default
+// update cycle:
+alarm[0] = MAP_WINDOW_ALARM;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+canDraw = true;
+
+// update cycle:
+//alarm[0] = MAP_WINDOW_ALARM;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (canDraw) {
+    
+    // access the SU grid data structure:
+    var ds_SUID = IDList.ds_SUID
+
+    
+
+    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// draw map:
+// TODO: conditions for drawing:
+if (canDraw) {
+    
+    // access the SU grid data structure:
+    var ds_SUID = IDList.ds_SUID
+    
+    // update map position
+    // origin is top left corner
+    x = view_xview + view_wview - ds_grid_width(ds_SUID)*MAP_TILE_SIZE - MAP_WINDOW_PADDING;
+    y = view_yview + TBAR_HEIGHT + MAP_WINDOW_PADDING; 
+    
+    var myViewX1 = (view_xview)/16;
+    var myViewX2 = (view_xview + view_wview)/16;
+    var myViewY1 = (view_yview)/16;
+    var myViewY2 = (view_yview + view_hview)/16;
+    
+    
+    for (var i = 0; i &lt; ds_grid_width(ds_SUID); i++) {
+        for (var j = 0; j &lt; ds_grid_height(ds_SUID); j++) {
+        
+        var currentSU = ds_grid_get(ds_SUID, i, j);
+        
+        var map_x = x + (currentSU.SU_x)*MAP_TILE_SIZE;
+        var map_y = y + (currentSU.SU_y)*MAP_TILE_SIZE;
+        
+        var map_x2 = map_x + MAP_TILE_SIZE;
+        var map_y2 = map_y + MAP_TILE_SIZE;
+        
+        // first check if water:
+        if (currentSU.isWater)
+            tileColor = c_blue;
+            
+        else {
+        
+            // VIEW BORDER:
+            if (  (i == myViewX1) || (i == myViewX2) ||
+               (j == myViewY1) || (j == myViewY2) ) {
+                    tileColor = c_red;
+            }
+        
+            // check for buildings, trees:
+            else {
+                //if building...
+                tileColor = c_lime;
+            }
+        }
+        
+        draw_set_color(tileColor);
+        draw_set_alpha(0.7);
+        draw_rectangle(map_x, map_y, map_x2, map_y2, false);
+        
+        // reset
+        draw_set_alpha(1);
+        draw_set_color(c_black);
+        }
+    }
+
+    
+
+    
+    
+    
+} // end if
+
+// END TODO----------------
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+  </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>0</PhysicsObjectShape>
